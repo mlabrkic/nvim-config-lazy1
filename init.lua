@@ -122,18 +122,8 @@ require('lazy').setup({
     end,
   },
 
-  { -- Set lualine as statusline
-    'nvim-lualine/lualine.nvim',
-    -- See `:help lualine.txt`
-    opts = {
-      options = {
-        icons_enabled = false,
-        theme = 'onedark',
-        component_separators = '|',
-        section_separators = '',
-      },
-    },
-  },
+  -- Set lualine as statusline
+  'nvim-lualine/lualine.nvim',  -- mlabrkic
 
   { -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
@@ -252,6 +242,25 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+-- [[ Configure lualine ]]
+-- Set lualine as statusline
+-- See `:help lualine.txt`
+local function column()
+  return [[C:%-c]]
+end
+
+require('lualine').setup {
+  options = {
+    icons_enabled = false,
+    theme = 'onedark',
+    component_separators = '|',
+    section_separators = '',
+  },
+  sections = {  -- mlabrkic
+    lualine_c = {column, {'filename', path = 3, shorting_target = 40, }},  -- column, filename
+  },
+}
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
