@@ -193,7 +193,7 @@ require('lazy').setup({
 -- See `:help vim.o`
 
 -- Set highlight on search
-vim.o.hlsearch = false
+-- vim.o.hlsearch = false  -- mlabrkic: because nvim-hlslens plugin
 
 -- Make line numbers default
 vim.wo.number = true
@@ -204,7 +204,7 @@ vim.o.mouse = 'a'
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+-- vim.o.clipboard = 'unnamedplus'  -- mlabrkic: keymaps.lua (:h registers, Selection registers "* and "+)
 
 -- Enable break indent
 vim.o.breakindent = true
