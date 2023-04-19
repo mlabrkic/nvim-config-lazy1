@@ -64,6 +64,32 @@ set cpoptions+=q        " When joining lines, leave the cursor
 ]]
 
 ------------------------------------------------------------
+-- GUI:
+
+--[[ neovim-qt wiki
+https://github.com/equalsraf/neovim-qt/wiki#guifontguiforegroundetc-dont-exist
+
+GuiFont/GuiForeground()/etc don't exist
+:Gui, TAB
+
+:echo exists('g:GuiLoaded')
+or
+lua print(vim.g.GuiLoaded)
+==> 0
+
+Likely means the neovim-gui-shim plugin is not being loaded,
+check your &runtimepath it should include a nvim-qt folder in there.
+echo &rtp
+
+nvim_gui_shim.vim :
+C:\UTILS\Neovim\share\nvim-qt\runtime\plugin\nvim_gui_shim.vim
+]]
+
+-- set &rtp to include the runtime folder
+-- h rtp
+vim.opt.rtp:append("C:/UTILS/Neovim/share/nvim-qt/runtime/")  -- mlabrkic
+
+------------------------------------------------------------
 -- 2 moving around, searching and patterns
 
 -- def: whichwrap=b,s  (allow specified keys to cross line boundaries)
