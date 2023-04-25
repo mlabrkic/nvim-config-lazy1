@@ -439,6 +439,15 @@ require('neodev').setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+-- Setup mason so it can manage external tooling
+require('mason').setup({
+  -- ui = {border = 'rounded'},
+
+	-- The directory in which to install packages.
+	-- install_root_dir = path.concat { vim.fn.stdpath "data", "mason" },
+	install_root_dir = "C:/UTILS/PORT/Neovim_LSP",  -- mlabrkic: due to the company's security settings
+})
+
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
