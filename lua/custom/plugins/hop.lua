@@ -4,7 +4,8 @@ return {
   -- Hop is an EasyMotion-like plugin
   { "phaazon/hop.nvim",
     cmd = "HopWord",
-    keys = { 'f', 'F', 't', 'T' },
+    -- keys = { 'f', 'F', 't', 'T' },
+    keys = { 'f', 't' },
     branch = 'v2', -- optional but strongly recommended
     -- enabled = false,
     opt = {
@@ -21,29 +22,27 @@ return {
       local hop = require('hop')
       local directions = require('hop.hint').HintDirection
 
-      -- Type a bigram
+      -- Type a bigram ...
 --[[
-      vim.keymap.set('', 'f', function()
+      vim.keymap.set('n', 'f', function()
         hop.hint_char2({ direction = directions.AFTER_CURSOR, current_line_only = false })
       end, {remap=true})
 
-      vim.keymap.set('', 'F', function()
+      vim.keymap.set('n', 'F', function()
         hop.hint_char2({ direction = directions.BEFORE_CURSOR, current_line_only = false })
       end, {remap=true})
 
-      vim.keymap.set('', 't', function()
+      vim.keymap.set('n', 't', function()
         hop.hint_char2({ direction = directions.AFTER_CURSOR, current_line_only = false, hint_offset = -1 })
       end, {remap=true})
 
-      vim.keymap.set('', 'T', function()
+      vim.keymap.set('n', 'T', function()
         hop.hint_char2({ direction = directions.BEFORE_CURSOR, current_line_only = false, hint_offset = 1 })
       end, {remap=true})
 ]]
 
-      vim.keymap.set('', 'f', function() hop.hint_char2() end, {remap=true})
-      vim.keymap.set('', 'F', function() hop.hint_char2() end, {remap=true})
-      vim.keymap.set('', 't', function() hop.hint_char2({ hint_offset = -1 }) end, {remap=true})
-      vim.keymap.set('', 'T', function() hop.hint_char2({ hint_offset = 1 }) end, {remap=true})
+      vim.keymap.set('n', 'f', function() hop.hint_char2() end, {remap=true})
+      vim.keymap.set('n', 't', function() hop.hint_char2({ hint_offset = -1 }) end, {remap=true})
     end,
   },
 
