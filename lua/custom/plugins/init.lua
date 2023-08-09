@@ -110,6 +110,52 @@ return {
     end,
   },
 
+  {
+    'uga-rosa/translate.nvim',
+    keys = { 'me', 'mh', 'mxe', 'mxh','mxc' },
+    config = function()
+      require("translate").setup({
+        default = {
+          -- parse_before = "trim,natural",
+          -- command = "google",
+          -- -- command = "deepl_pro",
+          -- parse_after = "head",
+          -- output = "floating",
+          output = "insert",
+        },
+        -- preset = {
+        --   output = {
+        --     -- split = {
+        --     --   append = true,
+        --     -- },
+        --   },
+        -- },
+      })
+      -- :h :Translate
+      -- :[range]Translate {target-lang} [{-options}...]
+      --  -source=hr
+      -- me:  translate hr to en
+      -- https://translate.google.com/?ucbcb=1&sl=hr&tl=en&op=translate
+      --
+      -- https://translate.google.hr/?hl=hr&tab=wT&sl=zh-CN&tl=en&op=translate
+      -- jdhao: zh-CN - kineski (pojednostavljeni)
+      vim.cmd([[
+        nnoremap me <Cmd>Translate en -source=hr<CR>
+        nnoremap mh <Cmd>Translate hr -source=en<CR>
+        nnoremap mxe :Translate en -source=zh-CN
+        nnoremap mxh :Translate hr -source=zh-CN
+        nnoremap mxc :Translate zh-CN -source=en<left><left><left>
+
+        " xnoremap me <Cmd>Translate en<CR>
+        " xnoremap mh <Cmd>Translate hr<CR>
+        xnoremap me <Cmd>Translate en -source=hr<CR>
+        xnoremap mh <Cmd>Translate hr -source=en<CR>
+        xnoremap mxe :Translate en -source=zh-CN
+        xnoremap mxh :Translate hr -source=zh-CN
+        xnoremap mxc :Translate zh-CN -source=en<left><left><left>
+      ]])
+    end,
+  },
 
 
 
